@@ -1,9 +1,9 @@
-import ProfilesList from "./components/ProfilesList";
+import Home from "./components/Home";
 
 function App() {
   return (
     <div className="w-[100%] h-[100vh]">
-      <ProfilesList />
+      <Home />
     </div>
   );
 }
