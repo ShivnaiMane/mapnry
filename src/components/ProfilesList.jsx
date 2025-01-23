@@ -1,9 +1,27 @@
+import { signOut } from "firebase/auth";
+import { auth } from "../Firebase/firebase";
+import { useNavigate } from "react-router-dom";
+
 const ProfilesList = ({ profiles, setShowMap, setProfile }) => {
+  const navigate = useNavigate();
+
+  const handleSignOut = async (e) => {
+    e.preventDefault();
+    await signOut(auth);
+    navigate("/signin");
+  };
+
   return (
     <div
       className="px-5 py-10 md:px-20 sm:px-30 sm:py-20  sm:m-auto "
       to="/profileslist"
     >
+      <button
+        className="flex-none rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm"
+        onClick={handleSignOut}
+      >
+        Log Out
+      </button>
       <div className="flex m-auto  w-1/2  mb-5 rounded-lg overflow-hidden"></div>
       {profiles?.map((profile) => (
         <ul role="list" className="divide-y divide-gray-100 " key={profile.id}>
